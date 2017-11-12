@@ -33,21 +33,35 @@ class Critter(object):
 	
 	# Listen your pupil
 	def talk(self):
-		print("My name is", self.name, ". I feel", self.mood)
+		print("\nMy name is",self.name,". I feel", self.mood)
 		self.__pass_time()
 		
 	# Feed pupil	
 	def eat(self, feed = 4):
-		print("Yummy yummy, thank you")
-		self.hunger -= feed
+		if feed > 10:
+			self.hunger = 0
+			print(self.name, "is overfed but he is the most happiest on the world")
+		elif feed > 4:
+			self.hunger -= feed+2
+			print("\nYummy yummy!", self.name, "enjoy that :)")
+		else:
+			self.hunger -= feed
+			print("\nThank you for a meal")
 		if self.hunger < 0:
 			self.hunger = 0
 		self.__pass_time()
 	
 	# Play with pupil
 	def play(self, fun = 4):
-		print("Yupi!!!")
-		self.boredom -= fun
+		if fun > 10:
+			self.boredom = 0
+			print("\nYooohooo! What a fun!!!")
+		elif fun > 4:
+			self.boredom -= fun+2
+			print("\nYuupii! I'm really enjoy!!!")
+		else:
+			self.boredom -= fun
+			print("\nI'm little bit less borring now ;)")
 		if self.boredom < 0:
 			self.boredom = 0
 		self.__pass_time()
@@ -71,19 +85,27 @@ def main():
 		3 - Let's play with beastie
 		""")
 		
-		choice = input("What you gonna do? ")
+		choice = input("\n\nWhat you gonna do? ")
 		
 		if choice == "0":
-			print("Thank you for your time. Good bye")
+			print("\n\nThank you for your time. Good bye")
 			
 		elif choice == "1":
 			crit.talk()
-			
+		# Feeding critter	
 		elif choice == "2":
-			crit.eat()
-			
+			food = input("\nHow much food do you want to give your pupil? ")
+			if food:
+				crit.eat(int(food))
+			else:	
+				crit.eat()
+		# Fun with critter
 		elif choice == "3":
-			crit.play()
+			time = input("\nHow much time do you want to spare for fun with critter? ")
+			if time:
+				crit.play(int(time))
+			else:
+				crit.play()
 			
 		else:
 			print("\nYou've enter wrong number")
