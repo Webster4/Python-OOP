@@ -8,7 +8,13 @@ class Critter(object):
 		self.name = name
 		self.boredom = boredom
 		self.hunger = hunger
-		
+	
+	def __str__(self):
+		rep = 'Name: ' + self.name + '\n' + 'Hunger: ' \
+		+ str(self.hunger) + '\n' 'Boredom: ' \
+		+ str(self.boredom) + '\n'
+		return rep
+	
 	def __pass_time(self):
 		self.boredom += 1
 		self.hunger += 1
@@ -106,7 +112,8 @@ def main():
 				crit.play(int(time))
 			else:
 				crit.play()
-			
+		elif choice == "i":
+			print(crit)
 		else:
 			print("\nYou've enter wrong number")
 			
