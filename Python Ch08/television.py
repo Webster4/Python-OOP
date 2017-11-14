@@ -2,19 +2,28 @@
 
 class Televisor(object):
 	"""TV simulator"""
-	def __init__(self, volume = 10):
-
+	def __init__(self, station = "TVP1", volume = 10):
+		self.station = station
 		self.volume = volume
+		
+	def __str__(self):
+		rep = 'Channel: {}\nVolume {}'.format(self.station, 
+														 self.volume)
+		return rep
 		
 	def change_station(self, station):
 		if station == "1":
-			print("\nTVP1")
+			self.station = "TVP1"
+			print(self.station)
 		elif station == "2":
-			print("\nTVP2")
+			self.station = "TVP2"
+			print(self.station)
 		elif station == "3":
-			print("\nElven Sports")
+			self.station = "Elven Sports"
+			print(self.station)
 		elif station == "4":
-			print("\nEskaTv")
+			self.station = "EskaTv"
+			print(self.station)
 		else:
 			print("Wrong button. You have only four channels")
 			
@@ -61,7 +70,8 @@ To turn off TV press 0.
 		# Turn down volume
 		elif choice == "-":
 			tele.volume_down()
-
+		elif choice == "i":
+			print(tele)
 		else: 
 			print("Wrong button")
 
